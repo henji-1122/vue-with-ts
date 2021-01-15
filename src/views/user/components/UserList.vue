@@ -36,12 +36,12 @@
       <el-table-column
         prop="id"
         label="用户ID"
-        width="100">
+        width="150">
       </el-table-column>
       <el-table-column
         prop="name"
         label="头像"
-        width="80">
+        width="150">
         <template slot-scope="scope">
           <img width="30px" :src="scope.row.portrait || 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png'">
         </template>
@@ -49,17 +49,17 @@
       <el-table-column
         prop="name"
         label="用户名"
-        width="120">
+        width="150">
       </el-table-column>
       <el-table-column
         prop="phone"
         label="手机号"
-        width="120">
+        width="150">
       </el-table-column>
       <el-table-column
         prop="createTime"
         label="注册时间"
-        width="120">
+        width="300">
       </el-table-column>
       <!-- <el-table-column
         prop="name"
