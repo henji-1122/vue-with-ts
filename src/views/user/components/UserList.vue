@@ -61,7 +61,7 @@
         label="注册时间"
         width="300">
       </el-table-column>
-      <!-- <el-table-column
+      <el-table-column
         prop="name"
         label="状态"
         width="80">
@@ -76,7 +76,7 @@
           >
           </el-switch>
         </template>
-      </el-table-column> -->
+      </el-table-column>
       <el-table-column
         prop="address"
         label="操作">
@@ -114,7 +114,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { getUserPages } from '@/services/user.ts'
+import { getUserPages, forbidUser } from '@/services/user.ts'
 import { getAllRoles, allocateUserRoles, getUserRoles } from '@/services/role.ts'
 import { Form } from 'element-ui'
 
@@ -193,6 +193,12 @@ export default Vue.extend({
       })
       this.$message.success('操作成功')
       this.dialogVisible = false
+    },
+
+    // 封禁用户
+    async handleForbidUser (user: any) {
+      const { data } = await forbidUser(user.id)
+      console.log(data)
     }
   }
 })
