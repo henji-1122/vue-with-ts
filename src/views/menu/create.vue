@@ -1,18 +1,21 @@
 <template>
-  <div>
-    <role-list></role-list>
+  <div class="menu-create">
+    <create-or-edit />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import roleList from './components/List.vue'
+import CreateOrEdit from './components/CreateOrEdit.vue'
 
 export default Vue.extend({
-  name: 'roleIndex',
+  name: 'MenuCreate',
+  data () {
+    return {}
+  },
 
   components: {
-    roleList
+    CreateOrEdit
   }
 })
 </script>

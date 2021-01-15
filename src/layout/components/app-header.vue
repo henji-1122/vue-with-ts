@@ -1,8 +1,8 @@
 <template>
   <div class="header">
-    <el-breadcrumb separator="/">
+    <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
+      <el-breadcrumb-item>{{$route.meta.title}}</el-breadcrumb-item>
     </el-breadcrumb>
 
     <el-dropdown>
@@ -32,7 +32,8 @@ export default Vue.extend({
 
   data () {
     return {
-      userInfo: {} // 当前登录用户信息
+      userInfo: {}, // 当前登录用户信息
+      routeName: ''
     }
   },
 

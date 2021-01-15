@@ -34,11 +34,14 @@ export default Vue.extend({
 }
 
 .el-aside {
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
   background: #d3dce6;
 }
 
 .el-header {
-  background: #fff;
+  background: #f8f9fb;
   display:flex;
   align-items: center;
 }

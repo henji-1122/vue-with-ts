@@ -4,3 +4,8 @@ declare module '*.vue' {
   import Vue from 'vue' // 类型为Vue构造函数
   export default Vue
 }
+
+// 在window上扩展阿里云上传全局数据对象
+interface Window {
+  AliyunUpload: any
+}

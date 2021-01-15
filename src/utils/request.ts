@@ -1,7 +1,7 @@
 // 封装请求模块
 import axios from 'axios'
 import store from '@/store'
-import { Massage } from 'element-ui'
+import { Message } from 'element-ui'
 import qs from 'qs'
 import router from '@/router' // 这里得到的router跟组件中使用的this.$router是同一个东西，路由里面创建的路由实例
 
@@ -54,7 +54,7 @@ function refreshToken () {
 
 // 响应拦截器
 let isReFreshing = false // 用来控制刷新token的状态
-let requests = [] // 存储刷新token期间过来的401请求
+let requests: any[] = [] // 存储刷新token期间过来的401请求
 request.interceptors.response.use(function (response) { // 响应成功(状态码为2xx都会进入这里)
   // console.log('响应成功了 =>', response)
   // 如果是自定义错误状态码，错误处理就写到这里
@@ -66,7 +66,7 @@ request.interceptors.response.use(function (response) { // 响应成功(状态�
   if (error.response) { // 请求发出去收到响应了，但是状态码超出了2xx范围
     const { status } = error.response
     if (status === 400) {
-      Massage.error('请求参数错误')
+      Message.error('请求参数错误')
     } else if (status === 401) {
       // token无效：没有提供token | token是无效的 | token过期了
       // 如果有refresh_token则尝试使用refresh_token获取新的access_token
@@ -112,16 +112,16 @@ request.interceptors.response.use(function (response) { // 响应成功(状态�
         })
       })
     } else if (status === 403) {
-      Massage.error('没有权限，请联系管理员')
+      Message.error('没有权限，请联系管理员')
     } else if (status === 404) {
-      Massage.error('请求资源不存在')
+      Message.error('请求资源不存在')
     } else if (status >= 500) {
-      Massage.error('服务端错误，请联系管理员')
+      Message.error('服务端错误，请联系管理员')
     }
   } else if (error.request) { // 请求发出去没有收到响应(网络超时或者网络断开了等)
-    Massage.error('请求超时，请刷新重试')
+    Message.error('请求超时，请刷新重试')
   } else { // 在设置请求时发生了一些事情，触发了一个错误
-    Massage.error(`请求失败：${error.message}`)
+    Message.error(`请求失败：${error.message}`)
   }
   // 把请求失败的错误对象继续抛出，扔给上一个调用者
   return Promise.reject(error)
